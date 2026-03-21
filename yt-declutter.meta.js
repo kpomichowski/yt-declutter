@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         YouTub Declutter
+// @name         YouTube Declutter
 // @namespace    https://github.com/kpomichowski/yt-declutter
 // @version      1.0.0
 // @description  Removes Shorts and video recommendations from YouTube
