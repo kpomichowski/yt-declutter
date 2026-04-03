@@ -33,9 +33,16 @@
       selector: "ytd-guide-entry-renderer a[href^='/@']",
       removeTarget: "ytd-guide-entry-renderer",
     },
+    {
+      selector: "ytd-video-renderer a#thumbnail[href^='/shorts/']",
+      removeTarget: "ytd-video-renderer",
+    },
+    { selector: "#secondary" },
+    { selector: "#chip-bar" },
+    { selector: "grid-shelf-view-model" },
     { selector: "ytd-guide-signin-promo-renderer" },
     { selector: "ytd-rich-shelf-renderer[is-shorts]" },
-    { selector: "ytd-feed-filter-chip-bar-renderer[at-start]" },
+    { selector: "ytd-feed-filter-chip-bar-renderer" },
     { selector: "ytd-guide-collapsible-entry-renderer #expander-item" },
   ];
 
@@ -89,6 +96,13 @@
     });
   }
 
+  function removeChipBarSpacing() {
+    const frostedGlass = document.querySelector("#frosted-glass.with-chipbar");
+    if (frostedGlass) {
+      frostedGlass.classList.remove("with-chipbar");
+    }
+  }
+
   function cleanUp() {
     const isMobile = window.location.hostname === "m.youtube.com";
     const rules = isMobile ? MOBILE_RULES : DESKTOP_RULES;
@@ -97,13 +111,19 @@
       : DESKTOP_SECTION_TITLES;
     console.log(`"${LOG_PREFIX}" cleanup() called, isMobile:`, isMobile);
     console.log(`"${LOG_PREFIX}" rules count:`, rules.length);
+    removeChipBarSpacing();
     removeByRules(rules);
     removeByTitleRules(titleRules);
   }
 
   function setUpObserver() {
     const observer = new MutationObserver(cleanUp);
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["class"],
+    });
   }
 
   function init() {
