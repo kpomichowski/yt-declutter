@@ -9,6 +9,6 @@
 // @run-at       document-start
 // @grant        GM_addStyle
 // @noframes
-// @updateURL    https://raw.githubusercontent.com/kpomichowski/yt-declutter/main/yt-declutter.meta.js
-// @downloadURL  https://raw.githubusercontent.com/kpomichowski/yt-declutter/main/yt-declutter.user.js
+// @updateURL    https://raw.githubusercontent.com/kpomichowski/yt-declutter/refs/heads/master/yt-declutter.meta.js
+// @downloadURL  https://raw.githubusercontent.com/kpomichowski/yt-declutter/refs/heads/master/yt-declutter.user.js
 // ==/UserScript==
